@@ -4,12 +4,8 @@
     <projectFile>dotnet-inventory-manager/dotnet-inventory-manager.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e41cc34-a451-484c-ae58-fc36afc90ab7" name="Changes" comment="starting dotnet port">
-      <change afterPath="$PROJECT_DIR$/dotnet-inventory-manager/ActiveInventory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dotnet-inventory-manager/InventoryManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dotnet-inventory-manager/Item.cs" afterDir="false" />
+    <list default="true" id="8e41cc34-a451-484c-ae58-fc36afc90ab7" name="Changes" comment="i think i could finish this in a day tbh">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.dotnet-inventory-manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dotnet-inventory-manager/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dotnet-inventory-manager/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/dotnet-inventory-manager/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666922543365</updated>
-      <workItem from="1666922546490" duration="3546000" />
+      <workItem from="1666922546490" duration="4313000" />
     </task>
     <task id="LOCAL-00001" summary="starting dotnet port">
       <created>1666922566604</created>
@@ -71,7 +67,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666922566604</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="i think i could finish this in a day tbh">
+      <created>1666926194252</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666926194252</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -93,6 +96,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="starting dotnet port" />
-    <option name="LAST_COMMIT_MESSAGE" value="starting dotnet port" />
+    <MESSAGE value="i think i could finish this in a day tbh" />
+    <option name="LAST_COMMIT_MESSAGE" value="i think i could finish this in a day tbh" />
   </component>
 </project>
