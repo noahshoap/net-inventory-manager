@@ -1,3 +1,38 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System;
 
-Console.WriteLine("Hello, World!");
+namespace dotnet_inventory_manager
+{
+    internal class Program
+    {
+        private static InventoryManager? _im;
+        public static void Main(string[] args)
+        {
+            
+            // Check if improper usage
+            if (args.Length != 2)
+            {
+                Console.Error.WriteLine("usage: ./main CLI inventory.csv");
+                return;
+            }
+
+            var cli = args[0] switch
+            {
+                "1" => true,
+                _ => false
+            };
+
+            _im = new InventoryManager(cli, args[1]);
+
+            try
+            {
+                _im.ReadCsvFile();
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return;
+            }
+            
+        }
+    }
+}
