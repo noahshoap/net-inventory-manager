@@ -5,11 +5,14 @@ public class InventoryManager
     private readonly bool _commandLine;
     private readonly string _fileName;
     private readonly ActiveInventory _inventory;
+    private readonly Login _login;
+    private User? _currentUser;
     public InventoryManager(bool commandLine, string inventoryFile)
     {
         this._commandLine = commandLine;
         this._fileName = inventoryFile;
         _inventory = new ActiveInventory();
+        _login = new Login();
         // Add Sales later.
     }
 
@@ -140,5 +143,15 @@ public class InventoryManager
         }
         
         return 0;
+    }
+
+    public bool UserLogin()
+    {
+        _currentUser = _login.UserInput();
+        _login.OutputCsv();
+
+        if (_currentUser is null) return false;
+
+        return true;
     }
 }

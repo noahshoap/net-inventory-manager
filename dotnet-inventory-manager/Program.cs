@@ -26,7 +26,7 @@ namespace dotnet_inventory_manager
             try
             {
                 _im.ReadCsvFile();
-
+                _im.UserLogin();
                 while (_im.UserInput() == 0)
                 {
                 }
