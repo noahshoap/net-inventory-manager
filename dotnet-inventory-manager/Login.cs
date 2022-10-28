@@ -40,7 +40,7 @@ public class Login
 
         while (true)
         {
-            Console.WriteLine("\n(L)ogin or (C)reate User:");
+            Console.Write("\n(L)ogin or (C)reate User: ");
             var input = Console.ReadLine() ?? throw new Exception("Failed to read input.");
 
             var argument = input[0];
@@ -95,6 +95,7 @@ public class Login
         }
         catch (Exception e)
         {
+            Console.Error.WriteLine(e.Message);
             Console.Error.WriteLine($"Unable to open '{FileName}'.");
             return false;
         }

@@ -39,6 +39,11 @@ public class InventoryManager
         }
     }
 
+    public int FileOutput()
+    {
+        throw new NotImplementedException();
+    }
+    
     public int UserInput()
     {
         if (!_commandLine)
@@ -58,6 +63,13 @@ public class InventoryManager
             case 'A':
             case 'a':
             {
+
+                if (_currentUser?.Permission < 3)
+                {
+                    Console.Error.WriteLine($"User {_currentUser.Username} does n ot have the required permissions to add an Item.");
+                    break;
+                }
+                
                 Console.Write("Enter item name: ");
                 var name = Console.ReadLine() ?? throw new Exception("Failed to read input");
                 Console.Write("Enter item category (Perishable or NonPerishable): ");
@@ -110,8 +122,13 @@ public class InventoryManager
             }
             case 'R': case 'r':
             {
-                // Implement permissions later.
 
+                if (_currentUser?.Permission < 3)
+                {
+                    Console.Error.WriteLine($"User {_currentUser.Username} does not the required permissions to remove an Item.");
+                    break;
+                }
+                
                 Console.Write("Name: ");
                 var name = Console.ReadLine() ?? throw new Exception("Failed to read input");
 
@@ -129,11 +146,33 @@ public class InventoryManager
                 _inventory.PrintItems("all");
                 break;
             case 'L': case 'l':
-                Console.WriteLine("Login / Logout not implemented yet.");
+                _currentUser = null;
+                UserLogin();
                 break;
-            case 'U': case 'u':
-                Console.WriteLine("Update not implemented yet.");
+            case 'U':
+            case 'u':
+            {
+                if (_currentUser?.Permission < 3)
+                {
+                    Console.Error.WriteLine(
+                        $"User {_currentUser.Username} does not the required permissions to update an Item.");
+                    break;
+                }
+
+                Console.Write("Enter name of item to update: ");
+                var name = Console.ReadLine() ?? throw new Exception("Failed to read input.");
+                Console.Write("Enter field to update (e.g. name, id, tax, etc): ");
+                var category = Console.ReadLine() ?? throw new Exception("Failed to read input.");
+                Console.Write($"Enter new value for {category}: ");
+                var value = Console.ReadLine() ?? throw new Exception("Failed to read input.");
+
+                if (_inventory.UpdateItem(name, category, value) != -1)
+                {
+                    Console.WriteLine($"Updated {category} of {name} to {value}.");
+                }
+                
                 break;
+            }
             case 'Q': case 'q':
                 Console.WriteLine("Exiting InventoryManager.");
                 return -1;

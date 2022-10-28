@@ -17,6 +17,20 @@ public class PerishableItem : Item
         Console.WriteLine($"{ID}{spacing}{Name}{spacing}{Category}{spacing}{Quantity}{spacing}{Backorder}{spacing}{BuyCost}{spacing}{Price}{spacing}{Tax * Price}{spacing}{TotalPrice}{spacing}{Profit}{spacing}{ExpirationDate}");
     }
 
+    public override void SetValue(string key, string value)
+    {
+        key = key.ToLower();
+        switch (key)
+        {
+            case "expiration_date":
+                ExpirationDate = value;
+                break;
+            default:
+                base.SetValue(key, value);
+                break;
+        }
+    }
+
     public override void PrintAsCsv()
     {
         throw new NotImplementedException();

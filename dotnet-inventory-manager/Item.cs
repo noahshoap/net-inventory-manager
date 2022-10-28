@@ -35,5 +35,55 @@ public abstract class Item
 
     public abstract void Print();
 
+    public virtual void SetValue(string key, string value)
+    {
+        try
+        {
+            key = key.ToLower();
+            switch (key)
+            {
+                case "name":
+                    Name = value;
+                    break;
+                case "category":
+                    Category = value;
+                    break;
+                case "sub_category":
+                    SubCategory = value;
+                    break;
+                case "quantity":
+                    Quantity = ulong.Parse(value);
+                    break;
+                case "backorder":
+                    Backorder = ulong.Parse(value);
+                    break;
+                case "id":
+                    ID = ulong.Parse(value);
+                    break;
+                case "sale_price":
+                    var tmpPrice = double.Parse(value);
+                    if (tmpPrice < 0) throw new Exception("Negative price");
+                    Price = tmpPrice;
+                    break;
+                case "buy_cost":
+                    var tmpCost = double.Parse(value);
+                    if (tmpCost < 0) throw new Exception("Negative cost");
+                    BuyCost = tmpCost;
+                    break;
+                case "tax":
+                    var tmpTax = double.Parse(value);
+                    if (tmpTax < 0) throw new Exception("Negative tax");
+                    Tax = tmpTax;
+                    break;
+                default:
+                    throw new Exception($"Could not find key '{key}' in Item or its subclasses.");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to set value '{value}' for key '{key}' for Item '{Name}'.");
+        }
+    }
+    
     public abstract void PrintAsCsv();
 }

@@ -58,6 +58,52 @@ public class ActiveInventory
          return 0;
      }
 
+     public int UpdateItem(string name, string field, string value)
+     {
+       try
+       {
+           field = field.ToLower();
+           
+           var item = SearchByName(name) ?? throw new Exception($"Item {name} is not in the inventory.");
+
+           if (field == "name")
+           {
+               if (SearchByName(value) is not null)
+                   throw new Exception($"Name {value} is already used by another Item.");
+
+               _invByName.Remove(name);
+               _invByCategory[item.Category].Remove(name);
+               
+               item.SetValue(field, value);
+               _invByName.Add(item.Name, item);
+               _invByCategory[item.Category].Add(item.Name, item);
+           } else if (field == "id")
+           {
+               var id = ulong.Parse(value);
+
+               if (SearchById(id) is not null) throw new Exception($"ID '{id}' is already used by another item.");
+
+               _invById.Remove(item.ID);
+               item.SetValue(field, value);
+               _invById.Add(item.ID, item);
+           } else if (field == "category")
+           {
+               throw new Exception("You can only set category when creating an Item.");
+           }
+           else
+           {
+               item.SetValue(field, value);
+           }
+       }
+       catch (Exception e)
+       {
+           Console.Error.WriteLine(e.Message);
+           return -1;
+       }
+         
+         return 0;
+     }
+     
      public Item? SearchByName(string name)
      {
          return _invByName.ContainsKey(name) ? _invByName[name] : null;
