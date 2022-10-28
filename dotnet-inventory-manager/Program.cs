@@ -7,7 +7,7 @@ namespace dotnet_inventory_manager
         private static InventoryManager? _im;
         public static void Main(string[] args)
         {
-            
+
             // Check if improper usage
             if (args.Length != 2)
             {
@@ -26,6 +26,11 @@ namespace dotnet_inventory_manager
             try
             {
                 _im.ReadCsvFile();
+
+                while (_im.UserInput() == 0)
+                {
+                }
+                
             }
             catch (Exception e)
             {
