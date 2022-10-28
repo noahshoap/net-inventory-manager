@@ -30,14 +30,14 @@ namespace dotnet_inventory_manager
                 while (_im.UserInput() == 0)
                 {
                 }
-                
+
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
-                return;
             }
-            
+
+            _im.FileOutput();
         }
     }
 }

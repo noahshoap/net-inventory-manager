@@ -84,6 +84,9 @@ public abstract class Item
             throw new Exception($"Failed to set value '{value}' for key '{key}' for Item '{Name}'.");
         }
     }
-    
-    public abstract void PrintAsCsv();
+
+    public virtual string PrintAsCsv()
+    {
+        return $"{Name},{ID},{Category},{SubCategory},{Quantity},{Backorder},{Price},{Tax},{TotalPrice},{BuyCost},{Profit},";
+    }
 }

@@ -31,8 +31,8 @@ public class PerishableItem : Item
         }
     }
 
-    public override void PrintAsCsv()
+    public override string PrintAsCsv()
     {
-        throw new NotImplementedException();
+        return $"{base.PrintAsCsv()}{ExpirationDate}";
     }
 }

@@ -14,8 +14,8 @@ public class NonPerishableItem : Item
         Console.WriteLine($"{ID}{spacing}{Name}{spacing}{Category}{spacing}{Quantity}{spacing}{Backorder}{spacing}{BuyCost}{spacing}{Price}{spacing}{Tax * Price}{spacing}{TotalPrice}{spacing}{Profit}{spacing}-1");
     }
 
-    public override void PrintAsCsv()
+    public override string PrintAsCsv()
     {
-        throw new NotImplementedException();
+        return $"{base.PrintAsCsv()}-1";
     }
 }

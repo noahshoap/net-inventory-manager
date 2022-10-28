@@ -41,7 +41,27 @@ public class InventoryManager
 
     public int FileOutput()
     {
-        throw new NotImplementedException();
+        var lines = new List<string>();
+        
+        lines.Add("Name,ID,Category,Sub-Category,Quantity,Backorder,Sale Price,Tax,Total,Price,Buy Cost,Profit,Expiration Date");
+
+        foreach (var entry in _inventory.InvByName)
+        {
+            lines.Add(entry.Value.PrintAsCsv());
+        }
+
+        try
+        {
+            File.WriteAllLines(_fileName, lines);
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e.Message);
+            Console.Error.WriteLine($"Unable to open file '{_fileName}' -- inventory WILL BE LOST!");
+            return -1;
+        }
+
+        return 0;
     }
     
     public int UserInput()
