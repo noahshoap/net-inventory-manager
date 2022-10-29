@@ -117,9 +117,7 @@ public class Login
 
     public bool OutputCsv()
     {
-        var lines = new List<string>();
-        
-        lines.Add("NAME,PASSWORD,ACCOUNT");
+        var lines = new List<string> {"NAME,PASSWORD,ACCOUNT"};
 
         foreach (var entry in _users)
         {
