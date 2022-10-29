@@ -5,6 +5,7 @@ namespace dotnet_inventory_manager
     internal class Program
     {
         private static InventoryManager? _im;
+        
         public static void Main(string[] args)
         {
 

@@ -7,6 +7,7 @@ public class InventoryManager
     private readonly ActiveInventory _inventory;
     private readonly Login _login;
     private User? _currentUser;
+    
     public InventoryManager(bool commandLine, string inventoryFile)
     {
         this._commandLine = commandLine;
