@@ -110,12 +110,10 @@ public class InventoryManager
                 var tax = Console.ReadLine() ?? throw new Exception("Failed to read input");
                 Console.Write("Enter expiration date (format xx/xx/xxxx) or -1 for NonPerishable: ");
                 var expiration = Console.ReadLine() ?? throw new Exception("Failed to read input");
-
-                category = category.ToLower();
-
+                
                 try
                 {
-                    Item item = category switch
+                    Item item = category.ToLower() switch
                     {
                         "perishable" => new PerishableItem(name, "Perishable", subCategory, quantity, backorder, id,
                             salePrice, buyPrice, tax, expiration),
@@ -163,7 +161,12 @@ public class InventoryManager
                 Console.WriteLine("Sale not implemented yet.");
                 break;
             case 'P': case 'p':
-                _inventory.PrintItems("all");
+                Console.WriteLine("\nPlease select a category to print or enter an item name.\n");
+                Console.Write("All | Perishable | NonPerishable | Item Name : ");
+
+                var tmp = Console.ReadLine() ?? throw new Exception("Failed to read input.");
+                
+                _inventory.PrintItems(tmp);
                 break;
             case 'L': case 'l':
                 _currentUser = null;

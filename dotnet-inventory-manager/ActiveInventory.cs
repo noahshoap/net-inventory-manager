@@ -128,11 +128,12 @@ public class ActiveInventory
              {
                  Console.WriteLine(item.Value.Print());
              }
-         } else if (value == "Perishable" || value == "NonPerishable")
+         } else if (value.ToLower() == "perishable" || value.ToLower() == "nonperishable")
          {
-             foreach (var item in InvByCategory[value])
+             var category = (value == "perishable") ? "Perishable" : "NonPerishable";
+             foreach (var item in InvByCategory[category])
              {
-                 item.Value.Print();
+                 Console.WriteLine(item.Value.Print());
              }
          }
          else
@@ -141,11 +142,11 @@ public class ActiveInventory
              
              if (item is null)
              {
-                 Console.Error.WriteLine($"Item '{value} is not in the inventory.");
+                 Console.Error.WriteLine($"Item '{value}' is not in the inventory.");
                  return;
              }
-             
-             item.Print();
+
+             Console.WriteLine(item.Print());
          }
      }
 

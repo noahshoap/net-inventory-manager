@@ -32,9 +32,6 @@ public abstract class Item
         if (Price < 0.0 || BuyCost < 0.0 || Tax < 0.0)
             throw new ArgumentException("Can't have negative price / purchase cost / tax.");
     }
-
-  //  Console.WriteLine($"{ID}{spacing}{Name}{spacing}{Category}{spacing}{Quantity}{spacing}{Backorder}{spacing}{BuyCost}{spacing}{Price}{spacing}{Tax * Price}{spacing}{TotalPrice}{spacing}{Profit}{spacing}{ExpirationDate}");
-
     
     public virtual string Print()
     {
