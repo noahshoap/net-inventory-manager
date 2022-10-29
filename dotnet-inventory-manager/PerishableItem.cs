@@ -11,10 +11,9 @@ public class PerishableItem : Item
         ExpirationDate = expDate;
     }
 
-    public override void Print()
+    public override string Print()
     {
-        var spacing = "       ";
-        Console.WriteLine($"{ID}{spacing}{Name}{spacing}{Category}{spacing}{Quantity}{spacing}{Backorder}{spacing}{BuyCost}{spacing}{Price}{spacing}{Tax * Price}{spacing}{TotalPrice}{spacing}{Profit}{spacing}{ExpirationDate}");
+        return string.Format($"{base.Print()}{ExpirationDate,-10}");
     }
 
     public override void SetValue(string key, string value)

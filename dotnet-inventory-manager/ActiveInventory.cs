@@ -126,7 +126,7 @@ public class ActiveInventory
          {
              foreach (var item in InvById)
              {
-                 item.Value.Print();
+                 Console.WriteLine(item.Value.Print());
              }
          } else if (value == "Perishable" || value == "NonPerishable")
          {

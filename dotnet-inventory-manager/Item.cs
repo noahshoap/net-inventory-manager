@@ -23,17 +23,23 @@ public abstract class Item
         Quantity = ulong.Parse(quantity);
         Backorder = ulong.Parse(backorder);
         ID = ulong.Parse(id);
-        Price = double.Parse(price);
-        BuyCost = double.Parse(cost);
-        Tax = double.Parse(tax);
-        Profit = Price - BuyCost;
-        TotalPrice = Price * (Tax * Price);
+        Price = Math.Round(double.Parse(price), 2);
+        BuyCost = Math.Round(double.Parse(cost), 2);
+        Tax = Math.Round(Price * Math.Round(double.Parse(tax), 2), 2);
+        Profit = Math.Round(Price - BuyCost, 2);
+        TotalPrice = Math.Round(Price + Tax, 2);
         
         if (Price < 0.0 || BuyCost < 0.0 || Tax < 0.0)
             throw new ArgumentException("Can't have negative price / purchase cost / tax.");
     }
 
-    public abstract void Print();
+  //  Console.WriteLine($"{ID}{spacing}{Name}{spacing}{Category}{spacing}{Quantity}{spacing}{Backorder}{spacing}{BuyCost}{spacing}{Price}{spacing}{Tax * Price}{spacing}{TotalPrice}{spacing}{Profit}{spacing}{ExpirationDate}");
+
+    
+    public virtual string Print()
+    {
+        return string.Format($"{ID,-7}{Name,-40}{Category, -17}{Quantity,-10}{Backorder, -10}{BuyCost, -15}{Price, -15}{Tax, -15}{TotalPrice, -15}{Profit, -10}");
+    }
 
     public virtual void SetValue(string key, string value)
     {

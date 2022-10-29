@@ -29,9 +29,9 @@ public class InventoryManager
             Item item = fields[2] switch
             {
                 "Perishable" => new PerishableItem(fields[0], fields[2], fields[3], fields[4], fields[5], fields[1],
-                    fields[6], fields[7], fields[8], fields[9]),
-                "NonPerishable" => new NonPerishableItem(fields[0], fields[2], fields[3], fields[4], fields[5],
-                    fields[1], fields[6], fields[7], fields[8]),
+                    fields[6], fields[9], fields[7], fields[11]),
+                "NonPerishable" => new NonPerishableItem(fields[0], fields[2], fields[3], fields[4], fields[5], fields[1],
+                    fields[6], fields[9], fields[7]),
                 _ => throw new FormatException("Bad category")
             };
 

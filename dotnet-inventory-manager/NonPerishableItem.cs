@@ -8,10 +8,9 @@ public class NonPerishableItem : Item
     {
     }
 
-    public override void Print()
+    public override string Print()
     {
-        var spacing = "       ";
-        Console.WriteLine($"{ID}{spacing}{Name}{spacing}{Category}{spacing}{Quantity}{spacing}{Backorder}{spacing}{BuyCost}{spacing}{Price}{spacing}{Tax * Price}{spacing}{TotalPrice}{spacing}{Profit}{spacing}-1");
+        return string.Format($"{base.Print()}{"-1",-10}");
     }
 
     public override string PrintAsCsv()
